@@ -1,0 +1,3 @@
+interface Greeting {
+    fun saySomething()
+}
