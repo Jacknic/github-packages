@@ -24,5 +24,10 @@ publishing {
                 password = System.getenv("GITHUB_TOKEN")
             }
         }
+        publications {
+            create("gpr", MavenPublication::class.java) {
+                from(components["java"])
+            }
+        }
     }
 }
