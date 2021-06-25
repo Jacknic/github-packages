@@ -2,9 +2,12 @@ plugins {
     kotlin("jvm") version "1.3.72"
     `maven-publish`
 }
-
+// 参考 Maven Publish Plugin
+// https://docs.gradle.org/current/userguide/publishing_maven.html#publishing_maven
+// 参考 volley/publish.gradle at master · google/volley
+// https://github.com/google/volley/blob/master/publish.gradle
 group = "com.jacknic.packages"
-version = "1.0.0-SNAPSHOT"
+version = "1.0.0"
 
 repositories {
     mavenCentral()
@@ -12,6 +15,11 @@ repositories {
 
 dependencies {
     implementation(kotlin("stdlib"))
+}
+
+java {
+    withJavadocJar()
+    withSourcesJar()
 }
 
 publishing {
@@ -25,7 +33,7 @@ publishing {
             }
         }
         publications {
-            create("gpr", MavenPublication::class.java) {
+            create<MavenPublication>("gpr") {
                 from(components["java"])
             }
         }
